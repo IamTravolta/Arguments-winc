@@ -5,33 +5,31 @@ __human_name__ = 'arguments'
 # Add your code after this line
 
 def greet(name, greeting='Hello, <name>!'):
-    greeting = greeting.replace("<name>", str(name))
-      
-    print(greeting)
+    return greeting.replace("<name>", str(name))
 
-greet("Travolta")
+print(greet("Travolta"))
 
-def force(mass, body="Earth"):
-    gravity_factor = 9.8
-    # if body == "Earth": gravity_factor = (9.8)
-    if body == "sun": gravity_factor = (274)
-    if body == "jupyter": gravity_factor = (24.9)
-    if body == "neptune": gravity_factor = (11.1)
-    if body == "saturn": gravity_factor = (10.4)
-    if body == "uranus": gravity_factor = (8.8)
-    if body == "venus": gravity_factor = (8.8)
-    if body == "mars": gravity_factor = (3.7)
-    if body == "mercury": gravity_factor = (3.7)
-    if body == "moon": gravity_factor = (1.6)
-    if body == "pluto": gravity_factor = (0.6)
+def force(mass, body='earth'):
+    gravity_per_body = {
+        'sun': 275,
+        'jupiter': 24.9,
+        'neptune': 11.1,
+        'saturn': 10.4,
+        'earth': 9.8,
+        'uranus':8.9,
+        'venus': 8.9,
+        'mas': 3.7,
+        'mercury':3.7,
+        'moon': 1.6,
+        'pluto':0.6,
+
+    }
+    gravity = gravity_per_body[body]
+    return mass * gravity
 
 
+print(force(10, 'pluto'))
 
-    force = mass * gravity_factor
-    return force
-
-print(force(33,"Mars"))
-print(force(33,"Earth"))
 
 def pull(m1,m2,d2):
     force = float(6.674*10**-11) * ((m1 * m2)/(d2*d2))
